@@ -1,0 +1,29 @@
+# Виртуальное окружение Python
+venv/
+env/
+.venv
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# База данных
+*.db
+*.sqlite
+*.sqlite3
+
+# Переменные окружения (содержат токены!)
+.env
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Операционная система
+.DS_Store
+Thumbs.db
+desktop.ini
