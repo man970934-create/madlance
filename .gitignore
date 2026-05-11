@@ -8,6 +8,7 @@ __pycache__/
 *.so
 
 # База данных
+data/
 *.db
 *.sqlite
 *.sqlite3
@@ -27,3 +28,10 @@ __pycache__/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Docker
+docker-compose.override.yml
+
+# Логи
+*.log
+logs/
