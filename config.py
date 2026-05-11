@@ -12,7 +12,7 @@ ADMIN_IDS = list(map(int, os.getenv("ADMIN_IDS", "").split(","))) if os.getenv("
 PAYMENT_PROVIDER_TOKEN = os.getenv("PAYMENT_PROVIDER_TOKEN")
 
 # Database
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///freelance_bot.db")
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///data/freelance_bot.db")
 
 # Channels mapping: category -> channel_id or @username
 CATEGORY_CHANNELS = {
