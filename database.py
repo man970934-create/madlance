@@ -1,11 +1,16 @@
 """Работа с базой данных"""
-import sqlite3
+import os
 import aiosqlite
 from datetime import datetime, timedelta
 from typing import Optional, List, Dict, Any
 from config import DATABASE_URL
 
 DB_PATH = DATABASE_URL.replace("sqlite:///", "")
+
+# Создаем директорию для БД, если её нет
+db_dir = os.path.dirname(DB_PATH)
+if db_dir and not os.path.exists(db_dir):
+    os.makedirs(db_dir, exist_ok=True)
 
 
 class Database:
