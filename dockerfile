@@ -2,22 +2,27 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-# Установка системных зависимостей (если нужны)
+# Установка системных зависимостей
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     && rm -rf /var/lib/apt/lists/*
 
-# Копируем файл зависимостей
+# Копируем requirements.txt и устанавливаем зависимости
 COPY requirements.txt .
-
-# Установка Python-зависимостей
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Копируем остальные файлы проекта
+# Копируем ВСЕ файлы проекта
 COPY . .
 
-# Создаем том для базы данных
-VOLUME ["/app/data"]
+# Создаем директорию для базы данных
+RUN mkdir -p /app/data
 
-# Запускаем бота
+# Проверяем наличие всех необходимых файлов
+RUN echo "=== Проверка файлов ===" && \
+    ls -la && \
+    echo "=== main.py: $(test -f main.py && echo 'OK' || echo 'MISSING') ===" && \
+    echo "=== database.py: $(test -f database.py && echo 'OK' || echo 'MISSING') ===" && \
+    echo "=== config.py: $(test -f config.py && echo 'OK' || echo 'MISSING') ==="
+
+# Запуск
 CMD ["python", "main.py"]
